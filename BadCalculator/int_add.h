@@ -1,11 +1,16 @@
-#ifndef INT_ADD_H
-#define INT_ADD_H
+#pragma once
+#include "number.h"
 
 
-class int_add
+struct IntAdd : Number
 {
-public:
-    int_add();
+    IntAdd(int newResult);
+    virtual ~IntAdd() {}
+    virtual std::unique_ptr<Number> operator+ (const Number& rhs) const override;
+    virtual std::unique_ptr<Number> operator- (const Number& rhs) const override;
+    virtual std::unique_ptr<Number> operator* (const Number& rhs) const override;
+    virtual std::unique_ptr<Number> operator/ (const Number& rhs) const override;
+    virtual std::string toString() const override;
+private:
+    int result;
 };
-
-#endif // INT_ADD_H

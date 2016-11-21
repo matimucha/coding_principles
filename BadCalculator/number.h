@@ -1,11 +1,18 @@
-#ifndef NUMBER_H
-#define NUMBER_H
+#pragma once
 
+#include <memory>
+#include <string>
 
-class Number
+struct Number
 {
-public:
-    Number();
+    virtual std::unique_ptr<Number> operator+ (const Number& rhs) const = 0;
+    virtual std::unique_ptr<Number> operator- (const Number& rhs) const = 0;
+    virtual std::unique_ptr<Number> operator* (const Number& rhs) const = 0;
+    virtual std::unique_ptr<Number> operator/ (const Number& rhs) const = 0;
+
+    virtual std::string toString() const = 0;
+
+    virtual ~Number(){}
 };
 
-#endif // NUMBER_H
+

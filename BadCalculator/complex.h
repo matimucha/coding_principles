@@ -1,11 +1,20 @@
-#ifndef COMPLEX_H
-#define COMPLEX_H
+#pragma once
+#include "number.h"
+#include <complex>
+#include <algorithm>
 
-
-class complex
+struct Complex : Number
 {
-public:
-    complex();
-};
+    Complex(std::complex<int> newResult);
+    virtual ~Complex();
 
-#endif // COMPLEX_H
+    virtual std::unique_ptr<Number> operator+ (const Number& rhs) const override;
+    virtual std::unique_ptr<Number> operator- (const Number& rhs) const override;
+    virtual std::unique_ptr<Number> operator* (const Number& rhs) const override;
+    virtual std::unique_ptr<Number> operator/ (const Number& rhs) const override;
+
+    virtual std::string toString() const override;
+
+private:
+    std::complex<int> result;
+};
